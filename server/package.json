@@ -27,8 +27,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
-    "engines": {
+  "description": "",
+  "engines": {
     "node": ">=14 <15"
   }
 }
