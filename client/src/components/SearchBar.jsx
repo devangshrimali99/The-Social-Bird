@@ -29,7 +29,7 @@ const SearchBar = () => {
   //     ? "http://localhost:3001/"
   //     : process.env.REACT_APP_SERVER_URL;
 
-  const serverUrl = "http://localhost:3001/";
+  const serverUrl = "https://the-social-bird.onrender.com/";
 
   const navigate = useNavigate();
 
