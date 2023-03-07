@@ -59,7 +59,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
   const patchFriend = async () => {
     const response = await fetch(
-      `http://localhost:3001/users/${_id}/${userId}`,
+      `https://the-social-bird.onrender.com/users/${_id}/${userId}`,
       {
         method: "PATCH",
         headers: {
