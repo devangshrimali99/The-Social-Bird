@@ -26,7 +26,10 @@ const SearchBar = () => {
 
   // const serverUrl =
   //   process.env.REACT_APP_ENV === "Development"
-  //     ? "http://localhost:3001/"
+  //     ? "http://
+  
+  
+  host:3001/"
   //     : process.env.REACT_APP_SERVER_URL;
 
   const serverUrl = "https://the-social-bird.onrender.com/";
@@ -45,7 +48,7 @@ const SearchBar = () => {
 
   const getSuggestions = async () => {
     const responseData = await fetch(
-      `http://localhost:3001/users/search/${searchInput}`,
+      `https://the-social-bird.onrender.com/users/search/${searchInput}`,
       {
         method: "GET",
         headers: {
