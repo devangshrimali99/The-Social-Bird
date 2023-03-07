@@ -16,7 +16,7 @@ const ProfilePage = () => {
   const { _id } = useSelector((state) => state.user);
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
+    const response = await fetch(`https://the-social-bird.onrender.com/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
