@@ -1,9 +1,11 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import multer from "multer";
+// import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
@@ -32,16 +34,37 @@ app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 // FILE STORAGE (MULTER)
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/assets");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "public/assets");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
+
+const multer = require("multer");
+
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+cloudinary.config({
+  cloud_name: "dv5bwr86j",
+  api_key: "971172682824298",
+  api_secret: "s6QzuOaF4J9RYI0hDh64GXRucRI",
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "thesocialbird",
+    allowedFormats: ["jpeg", "png", "jpg"],
   },
 });
 
 const upload = multer({ storage });
+
+// const upload = multer({ storage });
 
 // Routes With Files
 app.post("/auth/register", upload.single("picture"), register);
